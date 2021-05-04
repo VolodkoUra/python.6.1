@@ -48,7 +48,9 @@
 """
 import string
 
+
 class Alphabet:
+
     def __init__(self, lang, letters):
         self.lang = lang
         self.letters = list(letters)
@@ -61,7 +63,9 @@ class Alphabet:
 
 
 class EngAlphabet(Alphabet):
-    super().__init__('En', string.ascii_uppercase)
+    __leters_num = 26
+    def __init__(self):
+        super().__init__('En', string.ascii_uppercase)
 
     def is_en_letter(self, l):
         if l.upper() in self.letters:
@@ -69,7 +73,18 @@ class EngAlphabet(Alphabet):
         else:
             return False
 
+    def letters_num(self):
+        return EngAlphabet.__leters_num
+
+    @staticmethod
+    def example():
+        print("English Example:\nDon't judge a book by it's cover.")
+
+
 if __name__ == '__main__':
-    a = Alphabet("English", ["a", "b", "c", "d", "e", "f"])
-    a.print()
-    a.letters_num()
+    e = EngAlphabet()
+    e.print()
+    print(e.letters_num())
+    print(e.is_en_letter("F"))
+    print(e.is_en_letter("Щ"))
+    e.example()
